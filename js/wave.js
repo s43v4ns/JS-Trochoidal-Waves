@@ -72,6 +72,7 @@ function startRender(){
 	var planeMaterial = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
 	planeMaterial.wireframe = true;
 	var plane = new THREE.Mesh( planeGeometry, planeMaterial );
+	//var plane = new SeaSurface( planeGeometry, planeMaterial );
 
 	plane.rotateX(1.5708);
 	plane.rotateZ(0.785398);
@@ -95,7 +96,7 @@ function startRender(){
 
 }
 
-function callIndividualWaveState(x,y,time)
+function callIndividualWaveState(x,y,time){}
 function calcNewPointPosition(x,y,z){
 	/*	Calclates the new position of a vertex in the pane mesh
 		Equations/funcations are from https://developer.nvidia.com/gpugems/GPUGems/gpugems_ch01.html
