@@ -24,10 +24,10 @@ const CAMERA_X_PAN_START = -0.5;
 */
 var waveDirection = new THREE.Vector3(1,1); // initiallly set so waves will go diagonally across the Mesh
 
-// This parameter controls the steepness of the wave should be between 0 and 1
-var waveSteepnessMesh = 0.5;
+// Wave amplitude 1 = default wave_amplitude
+var wave_amplitude = 0.5;
 
-// Prameter for wave_length
+// Prameter for wave_length 1 = default wave length
 var wave_length = 1;
 
 // Wave frequency is equivalent to 2/wave_length
@@ -101,7 +101,7 @@ function startRender(){
 function calcSin(coordinate) {
 
 	// Calculate the y coordinate of the position of a sine wave
-	coordinate.z = Math.sin(coordinate.x);
+	coordinate.z = wave_amplitude * Math.sin(wave_length * coordinate.x);
 	return coordinate;
 	//return new THREE.Vector3(coordinate.x,Math.sin(coordinate.x),coordinate.z);
 
