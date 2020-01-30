@@ -85,7 +85,9 @@ function startRender(){
 	camera.position.y = CAMERA_Y_START;
 	camera.rotateX(CAMERA_X_PAN_START);
 
-	console.log("here 3")
+	for(var i = 0; i < planeGeometry.vertices.length; i++){
+		planeGeometry.vertices[i] = calcSin(planeGeometry.vertices[i]);
+	}
 
 	var animate = function () {
 		requestAnimationFrame( animate );
@@ -96,14 +98,19 @@ function startRender(){
 
 }
 
-function callIndividualWaveState(x,y,time){}
-function calcNewPointPosition(x,y,z){
-	/*	Calclates the new position of a vertex in the pane mesh
-		Equations/funcations are from https://developer.nvidia.com/gpugems/GPUGems/gpugems_ch01.html
-		Nvidia's book GPUGems
-		Waves are based on gernster wave functions (trochiodal waves).
+function calcSin(coordinate) {
 
-		Returns a THREE.Vector3 with the new coordiantes
-	*/
+	// Calculate the y coordinate of the position of a sine wave
+	coordinate.z = Math.sin(coordinate.x);
+	return coordinate;
+	//return new THREE.Vector3(coordinate.x,Math.sin(coordinate.x),coordinate.z);
 
+}
+
+function radToDeg(radians){
+	return radians * (180/Math.PI);
+}
+
+function degToRad(degrees){
+	return degrees * (Math.PI/180);
 }
